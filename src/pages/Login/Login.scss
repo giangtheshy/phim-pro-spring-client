@@ -1,0 +1,219 @@
+@import "~scss/config";
+.login {
+  @include grid;
+  .loading {
+    @include grid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($lightBlack, 0.8);
+    .loading-img {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+  .login {
+    @include flex(column, center, center);
+    width: 60vw;
+    height: 100vh;
+    background-color: $lightBlack;
+    border-radius: 1rem;
+    line-height: 3;
+    .title {
+      color: $orange;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+    .logo {
+      @include flex(row, center, center);
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+      .icon-logo {
+        color: $orange;
+        margin-right: 0.2rem;
+        font-size: 1.7rem;
+      }
+    }
+    .btn-group {
+      @include flex(row, center, center);
+      margin-bottom: 3rem;
+      width: 15rem;
+      .btn-login {
+        @include hover(100%, center center, #fff, $red);
+        @include button($blue, relative);
+        width: 80%;
+        margin: 0 auto;
+      }
+      .btn-register {
+        @include hover(100%, center center, #fff, $red);
+        @include button($orange, relative);
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+    form {
+      @include flex(column, center, center);
+      margin-bottom: 3rem;
+      .text-input {
+        width: 100%;
+        margin: 0.5rem 0;
+        input {
+          width: 100%;
+          border: none;
+          border-radius: 0.5rem;
+          padding: 0.3rem 1rem;
+          font-size: 1.1rem;
+          background-color: #eee;
+        }
+      }
+      .btn-submit {
+        @include hover(100%, center center, #fff, $red);
+        @include button($blue, relative);
+      }
+      .btn-submit-register {
+        @include hover(100%, center center, #fff, $red);
+        @include button($orange, relative);
+      }
+    }
+    .login-btn {
+      @include flex(row, center, center);
+      background-color: $red;
+      color: #fff;
+      border: none;
+      font-size: 1.3rem;
+      padding: 0.5rem 2rem;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      .icon {
+        margin: 0 0.5rem 0 0;
+      }
+    }
+  }
+}
+.account {
+  position: relative;
+  .modal-avatar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    form {
+      position: relative;
+      width: 50%;
+      height: 50%;
+      background-color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      @include screen(custom, 500px) {
+        width: 100%;
+      }
+      img {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 1rem auto;
+      }
+      input {
+        margin-left: 2rem;
+      }
+      .btn-submit {
+        @include hover(100%, center center, #fff, $darkBlack);
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        background: $blue;
+        color: #fff;
+        padding: 0.5rem;
+        margin: 2rem 5rem;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+  .logout-btn {
+    @include hover(100%, center center, #fff, $darkBlack);
+    @include button;
+    @include screen(custom, 560px) {
+      top: 2rem;
+    }
+  }
+  .change-avatar {
+    @include hover(100%, center center, #fff, $darkBlack);
+    @include button($blue);
+    right: 10rem;
+    @include screen(custom, 560px) {
+      top: -1rem;
+      right: 1rem;
+    }
+  }
+  .upgrade {
+    @include hover(100%, center center, #fff, $darkBlack);
+    @include button($orange);
+    right: 24rem;
+    @include screen(custom, 560px) {
+      top: 2rem;
+      right: 9rem;
+    }
+  }
+  .btn-group {
+    @include flex(row, center, center);
+    padding-top: 5rem;
+    margin: 0rem auto 5rem auto;
+    width: 50%;
+    @include screen(custom, 500px) {
+      width: 100%;
+    }
+    button {
+      @include hover(100%, center center, #fff, $darkBlack);
+      @include flex(row, unset, center);
+      border-radius: 0.5rem;
+      padding: 1rem 1.5rem;
+      border: none;
+      margin-right: 0.5rem;
+      font-size: 1.1rem;
+      color: #fff;
+      cursor: pointer;
+      background-color: gray;
+      &.active {
+        &.add-fav {
+          background-color: $red;
+        }
+        &.watch {
+          background-color: $blue;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+  .login {
+    .login {
+      width: 80vw;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .login {
+    .login {
+      width: 100%;
+      .login-btn {
+        padding: 1rem;
+        .icon {
+          font-size: 3.5rem;
+        }
+      }
+    }
+  }
+}

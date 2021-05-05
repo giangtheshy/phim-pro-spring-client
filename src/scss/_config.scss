@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script&display=swap");
+
+$orange: #f1b722;
+$lightBlack: #0c2738;
+$darkBlack: #081b27;
+$transition: all 0.3s ease-in-out;
+$animation: all 0.5s ease-in-out;
+$blue: #3898ec;
+$red: #dd4b39;
+$fontPremium: "Dancing Script", cursive;
+$fontPremiumSd: "Caveat", cursive;
+@mixin flex($direction: row, $justify: unset, $align: unset) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+@mixin grid() {
+  display: grid;
+  place-items: center;
+}
+@mixin hover($size: 100%, $position: center center, $color: #fff, $background: $orange) {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  transition: $transition;
+  &:hover {
+    .child {
+      z-index: 1;
+      transition: $transition;
+      color: $color;
+    }
+    &::before {
+      clip-path: circle($size at $position);
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $background;
+    transition: $transition;
+    clip-path: circle(0 at $position);
+  }
+}
+@mixin button($color: $red, $position: absolute) {
+  @include flex(row, center, center);
+  position: $position;
+  right: 1rem;
+  top: 0rem;
+  background-color: $color;
+  color: #fff;
+  border: none;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  .icon {
+    margin: 0 0.5rem 0 0;
+  }
+}
+@mixin screen($breakpoint, $size: 1200px) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 368px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: 768px) {
+      @content;
+    }
+  }
+  @if $breakpoint == laptop {
+    @media only screen and (max-width: 992px) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media only screen and (min-width: 1200px) {
+      @content;
+    }
+  }
+  @if $breakpoint == custom {
+    @media only screen and (max-width: $size) {
+      @content;
+    }
+  }
+  @if $breakpoint == custom-large {
+    @media only screen and (min-width: $size) {
+      @content;
+    }
+  }
+}

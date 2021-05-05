@@ -1,0 +1,65 @@
+@import "~scss/config";
+
+.nav {
+  height: 100%;
+  @include screen(tablet) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 20rem;
+    background-color: $darkBlack;
+    border-right: 2px solid #000;
+    z-index: 2;
+    padding-top: 3rem;
+    transition: $transition;
+    transform: translateX(100%);
+  }
+  ul {
+    @include flex(row, center, center);
+    list-style-type: none;
+    height: 100%;
+    @include screen(tablet) {
+      flex-direction: column;
+      justify-content: start;
+    }
+    li {
+      @include grid;
+      color: #bbb;
+      margin: 0 1rem;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      height: 100%;
+      transition: $transition;
+      @include screen(tablet) {
+        width: 50%;
+        height: 4rem;
+        place-items: unset !important;
+        padding: 1rem 0 1rem 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+      &:hover {
+        color: #fff;
+      }
+      &.active {
+        border-bottom: 3px solid $orange;
+        color: #fff;
+      }
+      .account {
+        @include flex(row, unset, center);
+        .avatar {
+          width: 2rem;
+          height: 2rem;
+          border-radius: 50%;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+  &.show {
+    @include screen(tablet) {
+      transform: translateX(0%);
+    }
+  }
+}

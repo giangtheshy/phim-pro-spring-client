@@ -1,0 +1,62 @@
+@import "../../scss/config";
+.manager {
+  .not-found {
+    color: $orange;
+    font-size: 3rem;
+    text-align: center;
+  }
+  .form-input {
+    width: 60%;
+    height: auto;
+    margin: 3rem auto;
+    form {
+      @include flex(column, center, center);
+      .text-input {
+        width: 100%;
+        margin: 0.5rem 0;
+        input {
+          width: 100%;
+          border: none;
+          border-radius: 0.5rem;
+          padding: 0.3rem 1rem;
+          font-size: 1.1rem;
+          background-color: #eee;
+        }
+        textarea {
+          @extend input;
+          resize: vertical;
+        }
+      }
+      .radio-group {
+        @include flex(row, space-around, center);
+        width: 100%;
+        margin-bottom: 1rem;
+        .radio-input {
+          width: 9rem;
+          color: $orange;
+          font-size: 1.1rem;
+        }
+      }
+      .submit-btn {
+        @include button($blue, relative);
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 400px) and (max-width: 768px) {
+  .manager {
+    .form-input {
+      width: 90%;
+    }
+  }
+}
+@media only screen and (max-width: 400px) {
+  .manager {
+    .form-input {
+      width: 100%;
+    }
+  }
+}

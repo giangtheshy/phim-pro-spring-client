@@ -1,0 +1,33 @@
+@import "~scss/config";
+.search-container {
+  form {
+    @include flex(row, center, center);
+    width: 90%;
+    margin: 0 auto;
+    input {
+      width: 85%;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem 0 0 0.5rem;
+      border: none;
+      font-size: 1rem;
+      @include screen(tablet) {
+        border-radius: 0.5rem;
+      }
+      &:focus-within {
+        box-shadow: 0 0 3px 2px $blue;
+      }
+    }
+    button {
+      width: 20%;
+      color: #fff;
+      background-color: $blue;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0 0.5rem 0.5rem 0;
+      font-size: 1rem;
+      @include screen(tablet) {
+        display: none;
+      }
+    }
+  }
+}

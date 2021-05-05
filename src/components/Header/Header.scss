@@ -1,0 +1,28 @@
+@import "~scss/config";
+
+header {
+  padding: 0rem 10%;
+  @include flex(row, space-between, center);
+  background-color: $lightBlack;
+  height: 4rem;
+  .logo {
+    @include flex(row, center, center);
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    .icon-logo {
+      color: $orange;
+      margin-right: 0.2rem;
+      font-size: 1.7rem;
+    }
+  }
+  .icon {
+    color: $orange;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    @include screen(tablet) {
+      display: block;
+    }
+  }
+}

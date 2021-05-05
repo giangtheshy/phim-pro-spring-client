@@ -1,0 +1,23 @@
+@import "~scss/config";
+.modal-film-overlay {
+  @include grid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba($lightBlack, 0.9);
+  z-index: 2;
+  .close-modal {
+    @include button;
+    top: 1rem;
+  }
+  .film {
+    width: 80%;
+    height: 80%;
+    @include screen(tablet) {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

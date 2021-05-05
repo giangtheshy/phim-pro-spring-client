@@ -1,0 +1,40 @@
+@import "./config";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+  outline: none;
+}
+html {
+  scroll-behavior: smooth;
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #888;
+    border-radius: 1rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #535353;
+    border-radius: 1rem;
+  }
+}
+.bold {
+  font-weight: bold;
+  padding-right: 0.1rem;
+}
+.orange-text {
+  color: $orange;
+}
+body {
+  background-color: $darkBlack;
+}
+.app {
+  &__content {
+    padding-top: 3rem;
+    width: 80%;
+    margin: 0 auto;
+  }
+}

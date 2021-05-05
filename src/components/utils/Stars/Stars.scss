@@ -1,0 +1,10 @@
+@import "~scss/config";
+.stars {
+  margin-top: 1rem;
+  .star {
+    color: #bbb;
+    &.active {
+      color: $orange;
+    }
+  }
+}

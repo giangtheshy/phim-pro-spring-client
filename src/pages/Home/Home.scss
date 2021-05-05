@@ -1,0 +1,9 @@
+@import "~scss/config";
+.home {
+  margin-top: 3rem;
+  display: flex;
+  @include screen(tablet) {
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+  }
+}

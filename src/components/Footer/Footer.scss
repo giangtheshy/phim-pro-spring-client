@@ -1,0 +1,43 @@
+@import "~scss/config";
+footer {
+  margin-top: 4rem;
+  background-image: linear-gradient(to bottom, #081b27, rgba(8, 27, 39, 0.9)),
+    url("https://global-uploads.webflow.com/5fe2d564b3fa64a886a11cee/5fe2d564b3fa643be1a11d52_Photo-8.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: darken;
+  background-size: cover;
+  .footer-top {
+    @include flex(row, space-around);
+    width: 70%;
+    margin: 0 auto;
+    border-bottom: 1px solid $lightBlack;
+    @include screen(tablet) {
+      width: 95%;
+    }
+    ul {
+      list-style-type: none;
+      li {
+        @include flex(row, unset, center);
+        transition: $transition;
+        color: #97abb6;
+        padding: 0.5rem 0;
+        &:hover {
+          color: $orange;
+          cursor: pointer;
+        }
+        .icon {
+          margin-right: 0.5rem;
+          color: $orange;
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+  .footer-bottom {
+    height: 4rem;
+    @include grid;
+    color: $orange;
+    padding-top: 2rem;
+  }
+}

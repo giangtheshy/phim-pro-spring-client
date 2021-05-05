@@ -1,0 +1,188 @@
+@import "~scss/config";
+.film {
+  width: 110%;
+  overflow: hidden;
+  &__introduce {
+    @include flex();
+    background-image: linear-gradient(0deg, #010f18, rgba(8, 27, 39, 0.8)),
+      url("https://www.fullphim.net/static/5fe2d564b3fa6403ffa11d1c/5fe2d564b3fa649938a12245_banner-dai-chien-ken-re.jpg");
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 1rem;
+    margin-bottom: 5rem;
+    padding: 3rem;
+    &-left {
+      margin-right: 3rem;
+      @include grid;
+      img {
+        width: 20rem;
+        height: 28rem;
+        border-radius: 1rem;
+        object-fit: cover;
+      }
+    }
+    &-right {
+      color: #fff;
+      padding-right: 2rem;
+      .title {
+        font-size: 4rem;
+      }
+      .evaluate {
+        @include flex(row, unset, center);
+        margin-bottom: 1rem;
+        .stars {
+          margin: 0 1rem 0 0;
+        }
+        p {
+          @include flex(row, center, center);
+          .icon-tag {
+            color: $orange;
+            margin: 0 0.5rem 0 0;
+          }
+        }
+      }
+      .btn-group {
+        margin-bottom: 1rem;
+        @include flex();
+        flex-wrap: wrap;
+        button {
+          @include hover(100%, center center, #fff, $darkBlack);
+          @include flex(row, unset, center);
+          border-radius: 0.5rem;
+          padding: 1rem 1rem;
+          border: none;
+          margin-right: 0.5rem;
+          margin-top: 0.5rem;
+          font-size: 1rem;
+          color: #fff;
+          cursor: pointer;
+          &.add-fav {
+            background-color: $red;
+            &.disable {
+              background-color: #bbb;
+              color: $darkBlack;
+            }
+          }
+          &.watch {
+            background-color: $blue;
+          }
+        }
+        .episode {
+          @include hover(100%, center center, #fff, $darkBlack);
+          background: $orange;
+          overflow: unset;
+          border-radius: 0.5rem;
+          padding: 1rem 1rem;
+          border: none;
+          margin-right: 0.5rem;
+          font-size: 1rem;
+          color: #fff;
+          cursor: pointer;
+          margin-top: 0.5rem;
+          @include flex(row, unset, center);
+          form {
+            position: absolute;
+            top: 4rem;
+            right: 0;
+            width: 400%;
+            background-color: $lightBlack;
+            padding: 1rem;
+            @include flex(column, center, center);
+            .text-input {
+              width: 100%;
+              margin: 0.5rem 0;
+              input {
+                width: 100%;
+                border: none;
+                border-radius: 0.5rem;
+                padding: 0.3rem 1rem;
+                font-size: 1.1rem;
+                background-color: #eee;
+              }
+            }
+
+            .submit-btn {
+              @include button($blue, relative);
+              margin-top: 2rem;
+              margin-bottom: 1rem;
+            }
+          }
+        }
+      }
+      .details-option {
+        line-height: 1.7;
+      }
+    }
+  }
+  &__detail {
+    width: 70%;
+    margin: 5rem auto;
+    color: #97abb6;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0;
+    transform: translateX(50%);
+    transition: all 0.8s linear;
+    &.show {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+  .film {
+    width: 100%;
+    &__introduce {
+      flex-direction: column;
+      padding: 2rem 1rem;
+      &-right {
+        padding: 0;
+        .btn-group {
+          button {
+            margin-top: 0.5rem;
+          }
+        }
+      }
+    }
+    &__detail {
+      width: 80% !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .film {
+    width: 100%;
+    &__introduce {
+      flex-direction: column;
+      padding: 1rem 0;
+      &-left {
+        img {
+          width: 15rem;
+          height: 20rem;
+        }
+      }
+      &-right {
+        padding: 0;
+        .title {
+          font-size: 2.5rem;
+        }
+        .btn-group {
+          flex-direction: column;
+          button {
+            width: 100%;
+            margin-top: 0.5rem;
+            justify-content: center;
+          }
+        }
+      }
+    }
+    &__detail {
+      width: 100% !important;
+    }
+  }
+}

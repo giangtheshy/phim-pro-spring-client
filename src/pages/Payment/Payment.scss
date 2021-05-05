@@ -1,0 +1,51 @@
+@import "~scss/config";
+.payment {
+  width: 100%;
+  height: 80vh;
+  display: grid;
+  place-items: center;
+  .center {
+    background: $lightBlack;
+    padding: 3rem 6rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    img {
+      width: 5rem;
+      height: 5rem;
+      margin-bottom: 1rem;
+    }
+    .title {
+      color: $orange;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    .price {
+      color: crimson;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    .benefit {
+      text-align: left;
+      color: $blue;
+    }
+    ul {
+      text-align: left;
+      margin-left: 3rem;
+      margin-top: 0.5rem;
+      color: $orange;
+    }
+    .checkout {
+      @include hover;
+      color: #fff;
+      padding: 0.3rem 1rem;
+      border-radius: 0.3rem;
+      border: none;
+      background: $blue;
+      margin: 1rem auto;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  }
+}

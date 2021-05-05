@@ -1,0 +1,26 @@
+@import "~scss/config";
+.left-container {
+  width: 30%;
+  margin-left: 2rem;
+  @include screen(tablet) {
+    width: 100%;
+    margin: 0;
+  }
+  &__top {
+    .title-left {
+      color: $orange;
+      @include screen(tablet) {
+        font-size: 2.5rem;
+      }
+    }
+  }
+  &__bottom {
+    margin-top: 5rem;
+    .title-left {
+      color: $orange;
+      @include screen(tablet) {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
