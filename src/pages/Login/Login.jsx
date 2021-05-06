@@ -86,7 +86,7 @@ const Login = () => {
       dataReg.password !== "" &&
       dataReg.passwordCheck !== "" &&
       dataReg.passwordCheck === dataReg.password &&
-      userData.password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[0-9])[0-9a-zA-Z]{8,}$/)
+      userData.password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[0-9]).{8,}$/)
     ) {
       if (dataReg.password.length >= 5 && dataReg.username.length >= 5) {
         const mess = await dispatch(registerUser(dataReg));
