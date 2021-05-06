@@ -17,10 +17,19 @@ const Episodes = ({ episode, handleView }) => {
   const handleAddEp = async (e) => {
     e.preventDefault();
     const regex = /youtube.com\/watch\?v=/g;
+    const regexFullPhim = /ok.ru\/video/g;
+    let url = "";
+    if (episodeData.url.match(regex)) {
+      url = episodeData.url.replace(regex, "youtube.com/embed/");
+    } else if (episodeData.url.match(regexFullPhim)) {
+      url = episodeData.url.replace(regexFullPhim, "ok.ru/videoembed");
+    } else {
+      url = episodeData.url;
+    }
     if (Object.values(episodeData).every((item) => item !== "")) {
       await apis.updateEpisode({
         ...episodeData,
-        url: episodeData.url.match(regex) ? episodeData.url.replace(regex, "youtube.com/embed/") : episodeData.url,
+        url: url,
       });
       setShowAddEp(false);
     }

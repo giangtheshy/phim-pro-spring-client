@@ -12,7 +12,6 @@ const Manager = () => {
 
   const [filmData, setFilmData] = useState({
     title: "",
-    url: "",
     image: "",
     stars: "",
     category: "",
@@ -41,7 +40,7 @@ const Manager = () => {
           updateFilm({
             ...filmData,
             search: convert(filmData.title),
-            url: filmData.url.match(regex) ? filmData.url.replace(regex, "youtube.com/embed/") : filmData.url,
+            // url: filmData.url.match(regex) ? filmData.url.replace(regex, "youtube.com/embed/") : filmData.url,
           })
         );
       } else {
@@ -49,14 +48,13 @@ const Manager = () => {
           createFilm({
             ...filmData,
             search: convert(filmData.title),
-            url: filmData.url.match(regex) ? filmData.url.replace(regex, "youtube.com/embed/") : filmData.url,
+            // url: filmData.url.match(regex) ? filmData.url.replace(regex, "youtube.com/embed/") : filmData.url,
           })
         );
       }
 
       setFilmData({
         title: "",
-        url: "",
         image: "",
         stars: "",
         category: "",
@@ -208,7 +206,7 @@ const Manager = () => {
               Phim Bộ
             </label>
           </div>
-          {filmData.is_multi === "false" && (
+          {/* {filmData.is_multi === "false" && (
             <label htmlFor="url" className="text-input">
               <input
                 type="text"
@@ -219,7 +217,7 @@ const Manager = () => {
                 placeholder="Đường dẫn video phim (ví dụ : https://video-phim-hay.mp4)"
               />
             </label>
-          )}
+          )} */}
           <button type="submit" className="submit-btn">
             {isEdit ? "Cập Nhật Phim" : "Thêm Phim"}
           </button>

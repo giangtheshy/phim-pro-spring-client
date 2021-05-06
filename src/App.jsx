@@ -25,10 +25,10 @@ const App = () => {
       dispatch(checkLogin());
     }
     dispatch(getFilms());
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     dispatch(setRole(role));
-  }, [role]);
+  }, [role, dispatch]);
   return (
     <div className="app">
       <Router>

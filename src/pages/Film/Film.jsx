@@ -81,11 +81,19 @@ const Film = () => {
   const handleAddEp = async (e) => {
     e.preventDefault();
     const regex = /youtube.com\/watch\?v=/g;
-
+    const regexFullPhim = /ok.ru\/video/g;
+    let url = "";
+    if (episode.url.match(regex)) {
+      url = episode.url.replace(regex, "youtube.com/embed/");
+    } else if (episode.url.match(regexFullPhim)) {
+      url = episode.url.replace(regexFullPhim, "ok.ru/videoembed");
+    } else {
+      url = episode.url;
+    }
     await apis.createEpisode({
       ...episode,
       film_id: id,
-      url: episode.url.match(regex) ? episode.url.replace(regex, "youtube.com/embed/") : episode.url,
+      url: url,
     });
     setEpisode({ number_ep: 0, url: "" });
   };
@@ -211,7 +219,7 @@ const Film = () => {
           </div>
         </div>
       </div>
-      {film.is_multi && <Episode id={id} handleView={handleView} />}
+      <Episode id={id} handleView={handleView} />
       <div ref={ref} className={`film__detail ${visible ? "show" : ""}`}>
         {film.description}
       </div>
