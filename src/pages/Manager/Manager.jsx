@@ -62,7 +62,6 @@ const Manager = () => {
         directors: "",
         country: "",
         description: "",
-        created_date: "date",
         up_coming: "false",
         evaluate: 10,
         is_multi: "false",

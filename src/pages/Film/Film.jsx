@@ -26,6 +26,7 @@ const Film = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users);
   const film = useSelector((state) => state.films.film);
+  const episodes = useSelector((state) => state.films.episodes);
   const films = useSelector((state) => state.films.films);
   const { id } = useParams();
   const history = useHistory();
@@ -45,16 +46,14 @@ const Film = () => {
   const handleWatch = () => {
     if (!user?.watched?.find((item) => item * 1 === film.id) && user.username) {
       localStorage.setItem("title", film.title);
-      localStorage.setItem("category", film.category);
-      setModal(!modal);
+      handleView(episodes[0].url);
       dispatch(addWatched(film.id));
     } else if (!user.username) {
       history.push("/account");
       alert("Phải Đăng Nhập Để Xem !");
     } else if (user.username) {
-      localStorage.setItem("category", film.category);
       localStorage.setItem("title", film.title);
-      setModal(!modal);
+      handleView(episodes[0].url);
     }
   };
   const handleEdit = () => {
