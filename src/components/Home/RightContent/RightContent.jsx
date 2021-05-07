@@ -39,7 +39,8 @@ const RightContent = ({ value, setValue, films }) => {
               ? film.up_coming === true && film
               : new Date().getTime() - film.created_date * 1000 < 1000 * 60 * 60 * 24 * 7 && film
           )
-          .filter((film) => film.search.includes(convert(value)))}
+          .filter((film) => film.search.includes(convert(value)))
+          .sort((a, b) => b.created_date - a.created_date)}
       />
     </section>
   );

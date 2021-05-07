@@ -5,7 +5,7 @@ import ListFilm from "../../utils/ListFilm/ListFilm";
 const LeftContent = ({ films }) => {
   const recommenderFilm = useCallback(() => {
     const title = localStorage.getItem("title");
-    if (!title || !category) {
+    if (!title) {
       return [];
     }
     const mapToArrayRecommendation = films.map((film) => {
