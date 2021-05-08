@@ -9,6 +9,7 @@ import { getFavorites, getWatched } from "actions/film.action";
 
 import ListFilm from "components/utils/ListFilm/ListFilm";
 import storage from "apis/firebase";
+import Loading from "components/utils/Loading/Loading";
 
 import "./Login.scss";
 
@@ -30,6 +31,8 @@ const Login = () => {
   const [modalAvatar, setModalAvatar] = useState(false);
   const [image, setImage] = useState("");
   const [progress, setProgress] = useState(0);
+  const [loadingLogin, setLoadingLogin] = useState(false);
+  const [loadingRegister, setLoadingRegister] = useState(false);
 
   const history = useHistory();
   useEffect(() => {
@@ -62,7 +65,7 @@ const Login = () => {
     e.preventDefault();
     if (userData.username !== "" && userData.password !== "") {
       try {
-        const message = await dispatch(loginUser(userData));
+        const message = await dispatch(loginUser(userData, setLoadingLogin));
         if (!message) {
           localStorage.setItem("isLoggedIn", "1");
           history.push("/");
@@ -79,23 +82,30 @@ const Login = () => {
   };
   const handleSubmitRegister = async (e) => {
     e.preventDefault();
+    if (dataReg.passwordCheck !== dataReg.password) {
+      console.log(dataReg);
+      alert("Mật khẩu không khớp!");
+      return;
+    }
+    if (userData.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[0-9]).{8,}$/)) {
+      alert("Mật khẩu phải có 1 số,1 chữ in hoa, 1 chữ in thường và 1 kí tự đặc biệt");
+      return;
+    }
     if (
       dataReg.name !== "" &&
       dataReg.username !== "" &&
       dataReg.email !== "" &&
       dataReg.password !== "" &&
-      dataReg.passwordCheck !== "" &&
-      dataReg.passwordCheck === dataReg.password &&
-      userData.password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[0-9]).{8,}$/)
+      dataReg.passwordCheck !== ""
     ) {
       if (dataReg.password.length >= 5 && dataReg.username.length >= 5) {
-        const mess = await dispatch(registerUser(dataReg));
+        const mess = await dispatch(registerUser(dataReg, setLoadingRegister));
         alert(mess);
       }
+      setDataReg({ email: "", name: "", password: "", username: "", passwordCheck: "" });
     } else {
       alert("Please Fill in full fields and correct type");
     }
-    setDataReg({ email: "", name: "", password: "", username: "", passwordCheck: "" });
   };
   const handleChangeFile = (e) => {
     const value = e.target.files[0];
@@ -218,7 +228,7 @@ const Login = () => {
               />
             </label>
             <button type="submit" className="btn-submit">
-              <span className="child"> Đăng Nhập</span>
+              <span className="child">{loadingLogin ? <Loading /> : "Đăng Nhập"} </span>
             </button>
           </form>
         ) : (
@@ -275,7 +285,7 @@ const Login = () => {
             </label>
             <label htmlFor="photo-url" className="photo-url"></label>
             <button type="submit" className="btn-submit-register">
-              <span className="child"> Đăng Ký</span>
+              <span className="child"> {loadingRegister ? <Loading /> : "Đăng Ký"}</span>
             </button>
           </form>
         )}

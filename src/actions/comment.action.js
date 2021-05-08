@@ -1,13 +1,19 @@
 import * as types from "constants/actionTypes";
 import * as apis from "apis";
 
-export const getAllComments = (id) => async (dispatch) => {
+export const getAllComments = (id, setLoading) => async (dispatch) => {
   try {
+    setLoading(true);
     const { data } = await apis.getAllComments(id);
     dispatch({ type: types.GET_ALL_COMMENT, payload: data });
+    setLoading(false);
   } catch (error) {
+    setLoading(false);
     console.log(error);
   }
+};
+export const clearComments = () => (dispatch) => {
+  dispatch({ type: types.GET_ALL_COMMENT, payload: [] });
 };
 export const createComment = (comment) => async (dispatch) => {
   try {

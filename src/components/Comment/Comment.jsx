@@ -4,10 +4,12 @@ import "./Comment.scss";
 import FormComment from "./FormComment/FormComment";
 import Comments from "./Comments/Comments";
 import useOnScreen from "components/utils/Hooks/useOnScreen";
+import Loading from "components/utils/Loading/Loading";
 
 const Comment = ({ id, comment_count }) => {
   const user = useSelector((state) => state.users.username);
   const [showComment, setShowComment] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [ref, visible] = useOnScreen({ threshold: 0.4 });
   return (
     <section className="comment-section">
@@ -17,11 +19,15 @@ const Comment = ({ id, comment_count }) => {
         onClick={() => setShowComment(!showComment)}
       >
         <span className="child">
-          {showComment
-            ? "Ẩn tất cả bình luận"
-            : comment_count === 0
-            ? "Thêm bình luận mới"
-            : `Hiển thị tất cả (${comment_count}) bình luận`}
+          {loading ? (
+            <Loading />
+          ) : showComment ? (
+            "Ẩn tất cả bình luận"
+          ) : comment_count === 0 ? (
+            "Thêm bình luận mới"
+          ) : (
+            `Hiển thị tất cả (${comment_count}) bình luận`
+          )}
         </span>
       </button>
       {showComment && (
@@ -31,7 +37,7 @@ const Comment = ({ id, comment_count }) => {
           ) : (
             <p style={{ textAlign: "center", color: "#fff" }}>Đăng nhập để đăng bình luận.</p>
           )}
-          <Comments id={id} />
+          <Comments id={id} setLoading={setLoading} />
         </>
       )}
     </section>

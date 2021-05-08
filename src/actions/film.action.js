@@ -35,8 +35,12 @@ export const removeFilm = (id) => async (dispatch) => {
 };
 export const getSingleFilm = (id) => async (dispatch) => {
   try {
-    const { data } = await api.getSingleFilm(id);
-    dispatch({ type: types.GET_SINGLE_FILM, payload: data });
+    if (id) {
+      const { data } = await api.getSingleFilm(id);
+      dispatch({ type: types.GET_SINGLE_FILM, payload: data });
+    } else {
+      dispatch({ type: types.GET_SINGLE_FILM, payload: null });
+    }
   } catch (error) {
     console.log(error);
   }

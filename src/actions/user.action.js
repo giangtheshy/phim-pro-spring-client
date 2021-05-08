@@ -13,27 +13,41 @@ import {
 } from "../constants/actionTypes";
 import * as api from "../apis";
 
-export const registerUser = (user) => async (dispatch) => {
+export const registerUser = (user, setLoading) => async (dispatch) => {
   try {
+    setLoading(true);
     const { data } = await api.registerUser({
       username: user.username,
       password: user.password,
       name: user.name,
       email: user.email,
     });
+    setLoading(false);
 
     return data;
   } catch (error) {
-    console.log(error);
+    setLoading(false);
+    if (error.response.data.message) {
+      return error.response.data.message;
+    } else {
+      return error.response.data;
+    }
   }
 };
-export const loginUser = (user) => async (dispatch) => {
+export const loginUser = (user, setLoading) => async (dispatch) => {
   try {
+    setLoading(true);
     const { data } = await api.loginUser({ username: user.username, password: user.password });
+    setLoading(false);
 
     dispatch({ type: LOGIN, payload: data });
   } catch (error) {
-    return error.response.data.message;
+    setLoading(false);
+    if (error.response.data.message) {
+      return error.response.data.message;
+    } else {
+      return error.response.data;
+    }
   }
 };
 export const logoutUser = () => (dispatch) => {

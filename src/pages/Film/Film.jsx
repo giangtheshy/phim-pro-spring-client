@@ -34,6 +34,7 @@ const Film = () => {
   useEffect(() => {
     dispatch(getSingleFilm(id));
     window.scrollTo({ top: 0, left: 0 });
+    return () => dispatch(getSingleFilm());
   }, [id]);
 
   const handleFav = () => {

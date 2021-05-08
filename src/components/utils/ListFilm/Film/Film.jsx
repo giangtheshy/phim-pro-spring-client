@@ -10,7 +10,7 @@ import useOnScreen from "components/utils/Hooks/useOnScreen";
 const Film = ({ film, index }) => {
   const history = useHistory();
   const user = useSelector((state) => state.users);
-  const [ref, visible] = useOnScreen({ threshold: 0.3 });
+  const [ref, visible] = useOnScreen({ threshold: 0 });
   const [status, setStatus] = useState(false);
   useEffect(() => {
     if (visible) {
@@ -21,7 +21,7 @@ const Film = ({ film, index }) => {
   return (
     <article
       ref={ref}
-      style={{ transitionDelay: `${index / 8}s` }}
+      style={{ transitionDelay: `${index / 10}s` }}
       className={`film-center ${status ? "show" : ""}`}
       onClick={() => history.push(`/film/${film.id}`)}
     >
