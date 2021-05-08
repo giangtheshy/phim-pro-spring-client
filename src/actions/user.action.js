@@ -43,8 +43,11 @@ export const loginUser = (user, setLoading) => async (dispatch) => {
     dispatch({ type: LOGIN, payload: data });
   } catch (error) {
     setLoading(false);
-
-    return error.response.data.message;
+    if (error.response.data.message) {
+      return error.response.data.message;
+    } else {
+      return error.response.data;
+    }
   }
 };
 export const logoutUser = () => (dispatch) => {
