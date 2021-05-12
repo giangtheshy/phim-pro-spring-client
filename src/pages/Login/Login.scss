@@ -78,6 +78,91 @@
         @include button($orange, relative);
       }
     }
+    .social-login {
+      width: 70%;
+      @include screen(tablet) {
+        width: 100%;
+      }
+      @include screen(phone) {
+        width: 120%;
+        padding-bottom: 2rem;
+      }
+      .google_login {
+        position: relative;
+        background: #dd4b39;
+        border: none;
+        color: #fff;
+        width: 70%;
+        margin: 1rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1.2rem;
+        padding: 0.3rem 1rem;
+        border-radius: 0.3rem;
+        transition: $transition;
+        cursor: pointer;
+        &::after {
+          content: "";
+          position: absolute;
+          left: 3rem;
+          top: 0;
+          height: 100%;
+          width: 1px;
+          background: #fff;
+        }
+        &:hover {
+          box-shadow: 0 0 2px 1px $red;
+          background: rgba($red, 0.6);
+        }
+        &_text {
+          margin: 0 1rem;
+        }
+        &_icon {
+          font-size: 1.5rem;
+        }
+      }
+      span {
+        background: #dd4b39;
+        width: 70%;
+        margin: 1rem auto;
+        display: flex;
+        align-items: center;
+        border-radius: 0.3rem;
+        .fb_btn {
+          position: relative;
+          border-radius: 0.3rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.3rem 1rem;
+          transition: $transition;
+          cursor: pointer;
+          background: #0a7fec;
+          color: #fff;
+          border: none;
+          width: 100%;
+          font-size: 1.2rem;
+          &:hover {
+            box-shadow: 0 0 2px 1px #0a7fec;
+            background: rgba(#0a7fec, 0.6);
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            left: 3rem;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background: #fff;
+          }
+          .icon {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
     .login-btn {
       @include flex(row, center, center);
       background-color: $red;

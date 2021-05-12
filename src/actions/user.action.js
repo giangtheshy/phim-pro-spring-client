@@ -4,7 +4,7 @@ import {
   UPDATE_AVATAR,
   GET_USER,
   LOGOUT,
-  CHECK_LOGIN,
+  LOGIN_FACEBOOK,
   LOGIN_GOOGLE,
   ADD_FAVORITE,
   ADD_WATCHED,
@@ -50,8 +50,9 @@ export const loginUser = (user, setLoading) => async (dispatch) => {
     }
   }
 };
-export const logoutUser = () => (dispatch) => {
+export const logoutUser = () => async (dispatch) => {
   try {
+    await api.logoutUser();
     dispatch({ type: LOGOUT });
   } catch (error) {
     console.log(error);
@@ -75,11 +76,29 @@ export const updateAvatar = (avatar) => async (dispatch) => {
     console.log(error);
   }
 };
-export const loginGoogle = (user) => async (dispatch) => {
+export const loginGoogle = (user, setLoading) => async (dispatch) => {
   try {
+    setLoading((prev) => ({ ...prev, google: true }));
     const { data } = await api.loginGoogle(user);
     dispatch({ type: LOGIN_GOOGLE, payload: data });
+    setLoading((prev) => ({ ...prev, google: false }));
+    return { success: true };
   } catch (error) {
+    setLoading((prev) => ({ ...prev, google: false }));
+    return { success: false };
+    console.log(error);
+  }
+};
+export const loginFacebook = (user, setLoading) => async (dispatch) => {
+  try {
+    setLoading((prev) => ({ ...prev, facebook: true }));
+    const { data } = await api.loginFacebook(user);
+    dispatch({ type: LOGIN_FACEBOOK, payload: data });
+    setLoading((prev) => ({ ...prev, facebook: false }));
+    return { success: true };
+  } catch (error) {
+    setLoading((prev) => ({ ...prev, facebook: false }));
+    return { success: false };
     console.log(error);
   }
 };

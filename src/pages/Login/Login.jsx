@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import GoogleLogin from "react-google-login";
+import FacebookLogin from "react-facebook-login";
+import { GrGooglePlus } from "react-icons/gr";
+import { FaFacebookF } from "react-icons/fa";
 import { HiEye, HiHeart } from "react-icons/hi";
 import { GiPopcorn } from "react-icons/gi";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { loginUser, logoutUser, registerUser, loginGoogle, updateAvatar } from "actions/user.action";
+import { loginUser, logoutUser, registerUser, loginGoogle, loginFacebook, updateAvatar } from "actions/user.action";
 import { getFavorites, getWatched } from "actions/film.action";
 
 import ListFilm from "components/utils/ListFilm/ListFilm";
@@ -33,6 +37,7 @@ const Login = () => {
   const [progress, setProgress] = useState(0);
   const [loadingLogin, setLoadingLogin] = useState(false);
   const [loadingRegister, setLoadingRegister] = useState(false);
+  const [loadingSocial, setLoadingSocial] = useState({ facebook: false, google: false });
 
   const history = useHistory();
   useEffect(() => {
@@ -42,13 +47,29 @@ const Login = () => {
     }
   }, [user.username]);
   const handleSuccess = async (res) => {
-    const { name, imageUrl, email, googleId } = res.profileObj;
-    const token = res.tokenId;
-    dispatch(loginGoogle({ name, imageUrl, googleId, email, token }));
-    history.push("/");
+    const { name, imageUrl, email } = res.profileObj;
+    const result = await dispatch(loginGoogle({ name, avatar: imageUrl, email }, setLoadingSocial));
+    if (result.success) {
+      localStorage.setItem("isLoggedIn", "1");
+      history.push("/");
+    } else {
+      alert("Đăng nhập thất bại");
+    }
   };
   const handleFailure = () => {
     alert("Some errors were occur when login");
+  };
+  const handleSuccessFacebook = async (res) => {
+    const { name, email, picture } = res;
+
+    const result = await dispatch(loginFacebook({ name, avatar: picture.data.url, email }, setLoadingSocial));
+
+    if (result.success) {
+      localStorage.setItem("isLoggedIn", "1");
+      history.push("/");
+    } else {
+      alert("Đăng nhập thất bại");
+    }
   };
   const handleClickLogout = async () => {
     dispatch(logoutUser());
@@ -290,17 +311,31 @@ const Login = () => {
           </form>
         )}
 
-        {/* <GoogleLogin
-          clientId="467571315756-vigfi3qh89vvgbeqhduotlr2jso13gl5.apps.googleusercontent.com"
-          onSuccess={handleSuccess}
-          onFailure={handleFailure}
-          cookiePolicy="single_host_origin"
-          render={(props) => (
-            <button className="login-btn" onClick={props.onClick} disabled={props.disabled}>
-              <ImGooglePlus className="icon" /> Đăng Nhập Bằng Google
-            </button>
-          )}
-        /> */}
+        <div className="social-login">
+          <GoogleLogin
+            clientId="829204377370-b6ut6u8efth0q8cdhcgmg681mjj09bce.apps.googleusercontent.com"
+            onSuccess={handleSuccess}
+            onFailure={handleFailure}
+            cookiePolicy="single_host_origin"
+            render={(props) => (
+              <button className="google_login " onClick={props.onClick} disabled={props.disabled}>
+                {loadingSocial.google ? <Loading /> : <GrGooglePlus className="google_login_icon" />}{" "}
+                <p className="google_login_text">Đăng nhập bằng Google</p>
+              </button>
+            )}
+          />
+          <FacebookLogin
+            appId="288252092999789"
+            autoLoad={false}
+            fields="name,email,picture"
+            callback={handleSuccessFacebook}
+            cssClass="fb_btn"
+            icon={loadingSocial.facebook ? <Loading /> : <FaFacebookF className="icon" />}
+            textButton="Đăng nhập bằng Facebook"
+            isMobile={false}
+            redirectUri="https://phim-pro.netlify.app"
+          />
+        </div>
       </div>
     </section>
   );

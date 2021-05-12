@@ -5,6 +5,7 @@ export const GET_USER = "GET_USER";
 export const DELETE_USER = "DELETE_USER";
 export const CHECK_LOGIN = "CHECK_LOGIN";
 export const LOGIN_GOOGLE = "LOGIN_GOOGLE";
+export const LOGIN_FACEBOOK = "LOGIN_FACEBOOK";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const ADD_WATCHED = "ADD_WATCHED";

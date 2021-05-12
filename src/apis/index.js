@@ -5,8 +5,10 @@ export const loginUser = (user) => axios.post("/auth/login", user);
 export const registerUser = (user) => axios.post("/auth/signup", user);
 export const verifyAccount = (token) => axios.get(`/auth/accountVerification/${token}`);
 export const checkLogin = () => axios.get("/auth/refresh/token");
+export const logoutUser = () => axios.delete("/auth/logout");
 export const updateAvatar = (avatar) => axios.put("/auth/avatar", avatar);
-export const loginGoogle = (user) => axios.post("/users/loginGoogle", user);
+export const loginGoogle = (user) => axios.post("/auth/login_google", user);
+export const loginFacebook = (user) => axios.post("/auth/login_facebook", user);
 
 export const getFavorites = () => axios.get(`/films/get_fav`);
 export const getWatched = () => axios.get(`/films/get_wat`);

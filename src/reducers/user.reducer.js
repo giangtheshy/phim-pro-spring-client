@@ -2,7 +2,7 @@ import {
   LOGIN,
   REGISTER,
   UPDATE_AVATAR,
-  GET_USER,
+  LOGIN_FACEBOOK,
   LOGOUT,
   CHECK_LOGIN,
   LOGIN_GOOGLE,
@@ -19,6 +19,7 @@ export default (
   switch (action.type) {
     case LOGIN:
     case LOGIN_GOOGLE:
+    case LOGIN_FACEBOOK:
       return {
         username: action.payload.name,
         token: action.payload.authenticationToken,
