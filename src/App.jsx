@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MessengerCustomerChat from "react-messenger-customer-chat";
 
 import { checkLogin, setRole } from "./actions/user.action";
 import { getFilms } from "./actions/film.action";
@@ -46,6 +47,7 @@ const App = () => {
           </Switch>
         </section>
         <Footer />
+        <MessengerCustomerChat pageId="107305324872546" appId="1877984012376416" />
       </Router>
     </div>
   );
