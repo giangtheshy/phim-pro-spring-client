@@ -62,7 +62,7 @@ const Login = () => {
   const handleSuccessFacebook = async (res) => {
     const { name, email, picture } = res;
 
-    const result = await dispatch(loginFacebook({ name, avatar: picture.data.url, email }, setLoadingSocial));
+    const result = await dispatch(loginFacebook({ name, avatar: picture?.data?.url, email }, setLoadingSocial));
 
     if (result.success) {
       localStorage.setItem("isLoggedIn", "1");

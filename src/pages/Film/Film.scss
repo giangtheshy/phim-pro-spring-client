@@ -43,6 +43,24 @@
           }
         }
       }
+      .btn-share {
+        background: transparent;
+        border: 1px solid #0984eb;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.3rem;
+        display: flex;
+        align-items: center;
+        color: #0984eb;
+        cursor: pointer;
+        .count {
+          padding-right: 0.5rem;
+          font-size: 1.5rem;
+          .icon {
+            padding-right: 0.3rem;
+            font-size: 1.8rem;
+          }
+        }
+      }
       .btn-group {
         margin-bottom: 1rem;
         @include flex();

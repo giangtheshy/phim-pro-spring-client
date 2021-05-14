@@ -5,7 +5,9 @@ import { BsTagFill } from "react-icons/bs";
 import { HiHeart, HiEye } from "react-icons/hi";
 import { BiEdit } from "react-icons/bi";
 import { FaTrash } from "react-icons/fa";
-import { AiOutlinePlusCircle } from "react-icons/ai";
+import { AiOutlinePlusCircle, AiOutlineShareAlt } from "react-icons/ai";
+import { FacebookButton, FacebookCount } from "react-social";
+import MetaTags from "react-meta-tags";
 
 import * as apis from "apis";
 import { getSingleFilm, setIsEdit, removeFilm } from "actions/film.action";
@@ -23,6 +25,7 @@ const Film = () => {
   const [url, setUrl] = useState("");
   const [showAddEp, setShowAddEp] = useState(false);
   const [episode, setEpisode] = useState({ number_ep: "", url: "" });
+  const [location, setLocation] = useState("");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users);
   const film = useSelector((state) => state.films.film);
@@ -30,6 +33,7 @@ const Film = () => {
   const films = useSelector((state) => state.films.films);
   const { id } = useParams();
   const history = useHistory();
+
   const [ref, visible] = useOnScreen({ threshold: 0.4 });
   useEffect(() => {
     dispatch(getSingleFilm(id));
@@ -37,6 +41,9 @@ const Film = () => {
     return () => dispatch(getSingleFilm());
   }, [id]);
 
+  useEffect(() => {
+    setLocation(window.location.href);
+  }, []);
   const handleFav = () => {
     if (user?.favorites?.find((item) => item * 1 === film.id)) {
       dispatch(removeFavorite(film.id));
@@ -100,13 +107,21 @@ const Film = () => {
   if (!film) return <></>;
   return (
     <section className="film">
+      <MetaTags>
+        <title>{film.title}</title>
+        <meta name="og:description" content={film.description} />
+        <meta property="og:title" content={film.title} />
+        <meta property="og:image" content={film.image} />
+      </MetaTags>
       {modal && <ModalFilm setModal={setModal} url={url || film.url} />}
       <div className="film__introduce">
         <div className="film__introduce-left">
           <img src={film.image} alt={film.title} />
         </div>
+
         <div className="film__introduce-right">
           <h3 className="title">{film.title}</h3>
+
           <div className="evaluate">
             <Stars stars={film.stars * 1} />
             <p>
@@ -114,6 +129,18 @@ const Film = () => {
               {film.category}
             </p>
           </div>
+          <FacebookButton
+            url={process.env.NODE_ENV === "production" ? location : "https://phim-pro.netlify.app/film/17"}
+            appId="1877984012376416"
+            className="btn-share"
+          >
+            <FacebookCount
+              className="count"
+              url={process.env.NODE_ENV === "production" ? location : "https://phim-pro.netlify.app/film/17"}
+            />
+            <AiOutlineShareAlt className="icon" />
+            Chia sẽ lên facebook
+          </FacebookButton>
           <div className="btn-group">
             <button
               className={`add-fav ${user?.favorites?.find((item) => item * 1 === film.id) ? "disable" : ""}`}
