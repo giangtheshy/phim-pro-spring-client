@@ -7,7 +7,7 @@ import { BiEdit } from "react-icons/bi";
 import { FaTrash } from "react-icons/fa";
 import { AiOutlinePlusCircle, AiOutlineShareAlt } from "react-icons/ai";
 import { FacebookButton, FacebookCount } from "react-social";
-import MetaTags from "react-meta-tags";
+// import MetaTags from "react-meta-tags";
 
 import * as apis from "apis";
 import { getSingleFilm, setIsEdit, removeFilm } from "actions/film.action";
@@ -107,12 +107,12 @@ const Film = () => {
   if (!film) return <></>;
   return (
     <section className="film">
-      <MetaTags>
+      {/* <MetaTags>
         <title>{film.title}</title>
         <meta name="og:description" content={film.description} />
         <meta property="og:title" content={film.title} />
         <meta property="og:image" content={film.image} />
-      </MetaTags>
+      </MetaTags> */}
       {modal && <ModalFilm setModal={setModal} url={url || film.url} />}
       <div className="film__introduce">
         <div className="film__introduce-left">
