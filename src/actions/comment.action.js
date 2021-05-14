@@ -15,10 +15,10 @@ export const getAllComments = (id, setLoading) => async (dispatch) => {
 export const clearComments = () => (dispatch) => {
   dispatch({ type: types.GET_ALL_COMMENT, payload: [] });
 };
-export const createComment = (comment) => async (dispatch) => {
+export const createComment = (comment, type) => async (dispatch) => {
   try {
     const { data } = await apis.createComment(comment);
-    dispatch({ type: types.CREATE_COMMENT, payload: data });
+    dispatch({ type: types.CREATE_COMMENT, payload: { data, type } });
   } catch (error) {
     console.log(error);
   }

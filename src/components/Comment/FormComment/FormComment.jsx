@@ -11,7 +11,7 @@ const FormComment = ({ id }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (value) {
-      dispatch(createComment({ film_id: id, message: value }));
+      dispatch(createComment({ film_id: id, message: value }, user.type));
       setValue("");
     } else {
       alert("Bình luận không thể trống");
