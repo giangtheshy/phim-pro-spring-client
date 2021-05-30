@@ -74,7 +74,7 @@ const Login = () => {
   const handleClickLogout = async () => {
     dispatch(logoutUser());
     localStorage.removeItem("isLoggedIn");
-    history.push("/account");
+    history.push("/");
   };
   const handleOnchangeLogin = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -251,6 +251,9 @@ const Login = () => {
             <button type="submit" className="btn-submit">
               <span className="child">{loadingLogin ? <Loading /> : "Đăng Nhập"} </span>
             </button>
+            <p className="forgot" onClick={() => history.push("/forgot-password")}>
+              Quên mật khẩu
+            </p>
           </form>
         ) : (
           <form onSubmit={handleSubmitRegister}>

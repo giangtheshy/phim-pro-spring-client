@@ -17,6 +17,8 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Payment from "pages/Payment/Payment";
 import VnPayReturn from "pages/VnPayReturn/VnPayReturn";
+import ForgotPassword from "pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "pages/ResetPassword/ResetPassword";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -44,6 +46,8 @@ const App = () => {
             <Route path="/payment/result" component={VnPayReturn} />
             <Route path="/manager" component={Manager} />
             <Route path="/film/:id" component={Film} />
+            <Route path="/forgot-password" component={ForgotPassword} />
+            <Route path="/reset-password/:token" component={ResetPassword} />
           </Switch>
         </section>
         <Footer />

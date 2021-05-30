@@ -6,6 +6,8 @@ export const registerUser = (user) => axios.post("/auth/signup", user);
 export const verifyAccount = (token) => axios.get(`/auth/accountVerification/${token}`);
 export const checkLogin = () => axios.get("/auth/refresh/token");
 export const logoutUser = () => axios.delete("/auth/logout");
+export const forgotPassword = (email) => axios.get(`/auth/forgot-password/${email}`);
+export const resetPassword = (data, token) => axios.post(`/auth/reset-password/${token}`, data);
 export const updateAvatar = (avatar) => axios.put("/auth/avatar", avatar);
 export const loginGoogle = (user) => axios.post("/auth/login_google", user);
 export const loginFacebook = (user) => axios.post("/auth/login_facebook", user);

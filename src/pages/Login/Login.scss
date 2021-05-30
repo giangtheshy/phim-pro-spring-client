@@ -17,7 +17,7 @@
   .login {
     @include flex(column, center, center);
     width: 60vw;
-    height: 100vh;
+    height: 120vh;
     background-color: $lightBlack;
     border-radius: 1rem;
     line-height: 3;
@@ -56,7 +56,7 @@
     }
     form {
       @include flex(column, center, center);
-      margin-bottom: 3rem;
+      margin-bottom: 1rem;
       .text-input {
         width: 100%;
         margin: 0.5rem 0;
@@ -72,10 +72,17 @@
       .btn-submit {
         @include hover(100%, center center, #fff, $red);
         @include button($blue, relative);
+        margin-left: 2rem;
       }
       .btn-submit-register {
         @include hover(100%, center center, #fff, $red);
         @include button($orange, relative);
+      }
+      .forgot {
+        color: $blue;
+        margin: 2rem 0 1rem 0;
+        font-weight: bold;
+        cursor: pointer;
       }
     }
     .social-login {
