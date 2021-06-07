@@ -22,7 +22,7 @@
     border-radius: 1rem;
     line-height: 3;
     .title {
-      color: $orange;
+      color: #FFF;
       font-size: 1.2rem;
       text-align: center;
     }
@@ -37,6 +37,7 @@
         font-size: 1.7rem;
       }
     }
+
     .btn-group {
       @include flex(row, center, center);
       margin-bottom: 3rem;
@@ -58,13 +59,13 @@
       @include flex(column, center, center);
       margin-bottom: 1rem;
       .text-input {
-        width: 100%;
+        width: 130%;
         margin: 0.5rem 0;
         input {
           width: 100%;
           border: none;
           border-radius: 0.5rem;
-          padding: 0.3rem 1rem;
+          padding: 0.3rem 2rem;
           font-size: 1.1rem;
           background-color: #eee;
         }
@@ -80,10 +81,24 @@
       }
       .forgot {
         color: $blue;
-        margin: 2rem 0 1rem 0;
         font-weight: bold;
         cursor: pointer;
       }
+      .forgot:hover{
+        text-decoration: underline;
+      }
+      
+    }
+    .hr-slice{
+      width: 70%;
+      margin: 0.5rem 0;
+    }
+    .hr-slice2{
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    .btn-slice{
+      margin-bottom: 1.5rem;
     }
     .social-login {
       width: 70%;
@@ -123,10 +138,10 @@
           background: rgba($red, 0.6);
         }
         &_text {
-          margin: 0 1rem;
+          margin-right: 20%;
         }
         &_icon {
-          font-size: 1.5rem;
+          font-size: 1.4rem;
         }
       }
       span {
@@ -165,8 +180,14 @@
           }
           .icon {
             margin-right: 1rem;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
           }
+          .fb-text{
+            padding:0;
+            margin: 0;
+            background-color: #0a7fec;
+          }
+          
         }
       }
     }
