@@ -60,6 +60,12 @@
       margin-bottom: 1rem;
       .text-input {
         width: 130%;
+        @include screen(tablet) {
+          width: 80%;
+        }
+        @include screen(phone) {
+          width: 80%;
+        }
         margin: 0.5rem 0;
         input {
           width: 100%;
@@ -138,10 +144,20 @@
           background: rgba($red, 0.6);
         }
         &_text {
+          @include screen(tablet) {
+            margin-right: 10%;
+            margin-left: 22%;
+          }
+          @include screen(phone) {
+            margin-right: 10%;
+            margin-left: 22%;
+          }
           margin-right: 20%;
+          margin-left: 0;
         }
         &_icon {
           font-size: 1.4rem;
+          margin-right: 1rem;
         }
       }
       span {
