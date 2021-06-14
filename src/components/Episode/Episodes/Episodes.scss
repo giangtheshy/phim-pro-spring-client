@@ -1,5 +1,4 @@
 @import "~scss/config";
-
 .btn-episode {
   // @include hover(100%, center center, #fff, $blue);
   position: relative;
@@ -7,13 +6,12 @@
   color: #fff;
   font-weight: bold;
   font-size: 1.2rem;
-  padding: 0.1px 0.5rem;
+  padding: 0.3rem 0.5rem;
   cursor: pointer;
   border-radius: 0.3rem;
   border: none;
   margin: 0.5rem 0.7rem;
   transition: $transition;
-
   .edit {
     position: absolute;
     top: -0.7rem;
@@ -25,29 +23,24 @@
     padding: 0.1rem 0.2rem;
     cursor: pointer;
   }
-
   .remove {
     @extend .edit;
     right: -0.6rem;
     left: unset;
     background: $red;
   }
-
   form {
     position: absolute;
     top: 4rem;
     left: 0;
     width: 20rem;
-    background-color: #194763;
-    border-radius: 0.5rem;
+    background-color: $lightBlack;
     padding: 1rem;
     z-index: 1;
     @include flex(column, center, center);
-
     .text-input {
       width: 100%;
       margin: 0.5rem 0;
-
       input {
         width: 100%;
         border: none;
@@ -60,80 +53,8 @@
 
     .submit-btn {
       @include button($blue, relative);
-      margin-top: 1rem;
-      margin-bottom: 0.2rem;
-      margin-left: 1rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
     }
   }
-}
-
-.btn-episode-selected {
-  // @include hover(100%, center center, #fff, $blue);
-  position: relative;
-  background: orangered;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.2rem;
-  padding: 0.1px 0.5rem;
-  cursor: pointer;
-  border-radius: 0.3rem;
-  border: none;
-  margin: 0.5rem 0.7rem;
-  transition: $transition;
-
-  .edit {
-    position: absolute;
-    top: -0.7rem;
-    left: -0.6rem;
-    border: none;
-    background: rgb(12, 190, 12);
-    color: #fff;
-    border-radius: 1rem;
-    padding: 0.1rem 0.2rem;
-    cursor: pointer;
-  }
-
-  .remove {
-    @extend .edit;
-    right: -0.6rem;
-    left: unset;
-    background: $red;
-  }
-
-  form {
-    position: absolute;
-    top: 4rem;
-    left: 0;
-    width: 20rem;
-    background-color: #194763;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    z-index: 1;
-    @include flex(column, center, center);
-
-    .text-input {
-      width: 100%;
-      margin: 0.5rem 0;
-
-      input {
-        width: 100%;
-        border: none;
-        border-radius: 0.5rem;
-        padding: 0.3rem 1rem;
-        font-size: 1.1rem;
-        background-color: #eee;
-      }
-    }
-
-    .submit-btn {
-      @include button($blue, relative);
-      margin-top: 1rem;
-      margin-bottom: 0.2rem;
-      margin-left: 1rem;
-    }
-  }
-}
-
-.ep_number {
-  font-size: smaller;
 }

@@ -1,5 +1,4 @@
 @import "~scss/config";
-
 .form-comment {
   display: flex;
   justify-content: space-between;
@@ -7,55 +6,44 @@
   padding-bottom: 1rem;
   border-bottom: 1px solid gray;
   animation: showform 0.5s 1 linear;
-
   @keyframes showform {
     from {
       opacity: 0;
       clip-path: circle(0px at top center);
     }
-
     to {
       opacity: 1;
       clip-path: circle(100% at top center);
     }
   }
-
   @include screen(custom, 400px) {
     flex-direction: column;
   }
-
   .info {
-    margin-right: 1rem;
-
+    margin-right: 2rem;
     @include screen(custom, 400px) {
       margin: 0 0 1rem 0;
     }
-
     img {
-      width: 3.3rem;
-      height: 3.3rem;
+      width: 3rem;
+      height: 3rem;
       object-fit: cover;
       border-radius: 50%;
     }
   }
-
   form {
     width: 100%;
     display: flex;
-
     input {
       width: 100%;
       padding: 0.3rem 1rem;
       border-radius: 0.2rem;
       border: 1px solid #fff;
       transition: $transition;
-      font-size: medium;
-
       &:focus-within {
         box-shadow: 0 0 3px 2px $blue;
       }
     }
-
     button {
       border-radius: 50%;
       display: grid;
@@ -63,12 +51,11 @@
       border: none;
       background: $blue;
       color: #fff;
-      width: 2.3rem;
-      height: 2.3rem;
+      width: 2rem;
+      height: 2rem;
       margin-left: 1rem;
       cursor: pointer;
       transition: $transition;
-
       &:hover {
         background: rgba($blue, 0.5);
       }
