@@ -1,12 +1,15 @@
 @import "~scss/config";
+
 .comment-section {
   text-align: center;
-  width: 60%;
+  width: 50%;
   margin: 0 auto 3rem auto;
   padding-bottom: 3rem;
+
   @include screen(tablet) {
     width: 100%;
   }
+
   .btn-show-comment {
     @include hover(100%, center center, #fff, $blue);
     justify-content: center;
@@ -18,12 +21,14 @@
     text-align: center;
     padding: 0.5rem;
     letter-spacing: 2px;
-    border-radius: 0.3rem;
+    border-radius: 1.5rem;
     border: none;
     transition: $transition;
     cursor: pointer;
+    margin-top: 1.2rem;
     margin-bottom: 2rem;
     opacity: 0;
+
     &.show {
       opacity: 1;
     }

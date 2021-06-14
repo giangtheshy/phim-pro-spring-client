@@ -19,42 +19,47 @@ import Payment from "pages/Payment/Payment";
 import VnPayReturn from "pages/VnPayReturn/VnPayReturn";
 import ForgotPassword from "pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "pages/ResetPassword/ResetPassword";
+import Watch from "pages/Watch/Watch";
 
 const App = () => {
-  const dispatch = useDispatch();
-  const role = useSelector((state) => state.users.role);
-  useEffect(() => {
-    if (localStorage.getItem("isLoggedIn")) {
-      dispatch(checkLogin());
-    }
-    dispatch(getFilms());
-  }, [dispatch]);
-  useEffect(() => {
-    dispatch(setRole(role));
-  }, [role, dispatch]);
-  return (
-    <div className="app">
-      <Router>
-        <Header />
-        <section className="app__content">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/oddfilm" component={OddFilm} />
-            <Route path="/seriesfilm" component={SeriesFilm} />
-            <Route path="/account" exact component={Login} />
-            <Route path="/account/payment" component={Payment} />
-            <Route path="/payment/result" component={VnPayReturn} />
-            <Route path="/manager" component={Manager} />
-            <Route path="/film/:id" component={Film} />
-            <Route path="/forgot-password" component={ForgotPassword} />
-            <Route path="/reset-password/:token" component={ResetPassword} />
-          </Switch>
-        </section>
-        <Footer />
-        <MessengerCustomerChat pageId="107305324872546" appId="1877984012376416" />
-      </Router>
-    </div>
-  );
+	const dispatch = useDispatch();
+	const role = useSelector(state => state.users.role);
+	useEffect(() => {
+		if (localStorage.getItem("isLoggedIn")) {
+			dispatch(checkLogin());
+		}
+		dispatch(getFilms());
+	}, [dispatch]);
+	useEffect(() => {
+		dispatch(setRole(role));
+	}, [role, dispatch]);
+	return (
+		<div className="app">
+			<Router>
+				<Header />
+				<section className="app__content">
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route path="/oddfilm" component={OddFilm} />
+						<Route path="/seriesfilm" component={SeriesFilm} />
+						<Route path="/account" exact component={Login} />
+						<Route path="/account/payment" component={Payment} />
+						<Route path="/payment/result" component={VnPayReturn} />
+						<Route path="/manager" component={Manager} />
+						<Route path="/film/:id/:ep" component={Watch} />
+						<Route path="/film/:id" component={Film} />
+						<Route path="/forgot-password" component={ForgotPassword} />
+						<Route path="/reset-password/:token" component={ResetPassword} />
+					</Switch>
+				</section>
+				<Footer />
+				<MessengerCustomerChat
+					pageId="107305324872546"
+					appId="1877984012376416"
+				/>
+			</Router>
+		</div>
+	);
 };
 
 export default App;
