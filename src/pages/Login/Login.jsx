@@ -213,17 +213,11 @@ const Login = () => {
           <GiPopcorn className="icon-logo" />
           <span className="bold orange-text">PHIM</span>PRO
         </div>
-        <p className="title">Đăng nhập để trải nghiệm tốt hơn</p>
-        <div className="btn-group">
-          {!isLogin && (
-            <button className="btn-login" onClick={() => setIsLogin(true)}>
-              <span className="child"> Đăng Nhập</span>
-            </button>
-          )}
-          {isLogin && (
-            <button className="btn-register" onClick={() => setIsLogin(false)}>
-              <span className="child"> Đăng Ký</span>
-            </button>
+        <div className="sub-title">
+          {isLogin ? (
+            <p className="title"> <span className="orange-text bold">ĐĂNG NHẬP</span> để có trải nghiệm tốt hơn!</p>
+          ):(
+            <p className="title"> <span className="orange-text bold">ĐĂNG KÝ</span> nếu bạn chưa có bất kì tài khoản nào!</p>
           )}
         </div>
         {isLogin ? (
@@ -235,7 +229,7 @@ const Login = () => {
                 id="username"
                 value={userData.username}
                 onChange={handleOnchangeLogin}
-                placeholder="User name"
+                placeholder="Tài Khoản"
               />
             </label>
             <label htmlFor="password" className="text-input">
@@ -245,15 +239,20 @@ const Login = () => {
                 id="password"
                 value={userData.password}
                 onChange={handleOnchangeLogin}
-                placeholder="Password"
+                placeholder="Mật Khẩu"
               />
             </label>
-            <button type="submit" className="btn-submit">
+            <button type="submit" className="btn-submit btn-slice">
               <span className="child">{loadingLogin ? <Loading /> : "Đăng Nhập"} </span>
             </button>
+            <hr className="hr-slice"></hr>
             <p className="forgot" onClick={() => history.push("/forgot-password")}>
               Quên mật khẩu
             </p>
+            <p className="forgot" onClick={() => setIsLogin(false)}>
+              Đăng ký
+            </p>
+            <hr className="hr-slice2"></hr>
           </form>
         ) : (
           <form onSubmit={handleSubmitRegister}>
@@ -267,6 +266,16 @@ const Login = () => {
                 placeholder="Email"
               />
             </label>
+            <label htmlFor="name" className="text-input">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value={dataReg.name}
+                onChange={handleOnchangeRegister}
+                placeholder="Họ tên đầy đủ"
+              />
+            </label>
             <label htmlFor="usernameReg" className="text-input">
               <input
                 type="text"
@@ -274,7 +283,7 @@ const Login = () => {
                 id="usernameReg"
                 value={dataReg.username}
                 onChange={handleOnchangeRegister}
-                placeholder="User name"
+                placeholder="Tên tài khoản"
               />
             </label>
             <label htmlFor="passwordReg" className="text-input">
@@ -284,7 +293,7 @@ const Login = () => {
                 id="passwordReg"
                 value={dataReg.password}
                 onChange={handleOnchangeRegister}
-                placeholder="Password"
+                placeholder="Mật khẩu"
               />
             </label>
             <label htmlFor="passwordRegCheck" className="text-input">
@@ -294,23 +303,18 @@ const Login = () => {
                 id="passwordRegCheck"
                 value={dataReg.passwordCheck}
                 onChange={handleOnchangeRegister}
-                placeholder="Password"
-              />
-            </label>
-            <label htmlFor="name" className="text-input">
-              <input
-                type="text"
-                name="name"
-                id="name"
-                value={dataReg.name}
-                onChange={handleOnchangeRegister}
-                placeholder="Họ Tên"
+                placeholder="Xác nhận mật khẩu"
               />
             </label>
             <label htmlFor="photo-url" className="photo-url"></label>
-            <button type="submit" className="btn-submit-register">
+            <button type="submit" className="btn-submit btn-slice">
               <span className="child"> {loadingRegister ? <Loading /> : "Đăng Ký"}</span>
             </button>
+            <hr className="hr-slice"></hr>
+            <p className="forgot" onClick={() => setIsLogin(true)}>
+              Đăng nhập ngay!
+            </p>
+            <hr className="hr-slice2"></hr>
           </form>
         )}
 
@@ -334,7 +338,7 @@ const Login = () => {
             callback={handleSuccessFacebook}
             cssClass="fb_btn"
             icon={loadingSocial.facebook ? <Loading /> : <FaFacebookF className="icon" />}
-            textButton="Đăng nhập bằng Facebook"
+            textButton={<span className="fb-text">Đăng nhập bằng Facebook</span>}
             isMobile={false}
             redirectUri="https://phim-pro.netlify.app"
           />
