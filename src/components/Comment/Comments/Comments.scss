@@ -1,14 +1,17 @@
 @import "~scss/config";
+
 .comments {
   width: 90%;
   margin: 0 auto;
+
   @include screen(custom, 400px) {
     width: 100%;
   }
+
   .comment-center {
     position: relative;
     width: 100%;
-    margin: 1rem 0;
+    margin: 0.7rem 0;
     display: flex;
     align-items: center;
     border: 1px solid #bbb;
@@ -18,22 +21,26 @@
     overflow: hidden;
 
     animation: show 0.3s 1 linear;
+
     &.premium {
       animation: show 0.3s 1 linear, premium 1s infinite linear;
+
       &::before {
         content: "VIP";
         position: absolute;
         top: -0rem;
-        right: 2.5rem;
+        right: 3.5rem;
         font-family: $fontPremium;
         color: #fff;
         background: $orange;
         padding: 0.2rem 0.3rem;
         border-radius: 0 0 0.3rem 0.3rem;
       }
+
       img {
         box-shadow: 0 0 8px 4px $orange;
       }
+
       .cmt-right {
         &__top {
           .name {
@@ -42,6 +49,7 @@
             text-shadow: 1px 2px 2px $orange;
           }
         }
+
         &__bot {
           .message {
             font-family: $fontPremiumSd;
@@ -52,25 +60,31 @@
         }
       }
     }
+
     @keyframes premium {
       0% {
         box-shadow: 1px 1px 8px 3px red;
       }
+
       25% {
         box-shadow: 1px 2px 8px 3px green;
       }
+
       75% {
         box-shadow: 1px 3px 8px 3px blue;
       }
+
       100% {
         box-shadow: 1px 2px 8px 3px yellow;
       }
     }
+
     @keyframes show {
       from {
         opacity: 0;
         clip-path: circle(0px at center center);
       }
+
       to {
         opacity: 1;
         clip-path: circle(100% at center center);
@@ -80,24 +94,27 @@
     @include screen(custom, 400px) {
       flex-direction: column;
     }
+
     .setting {
       position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
+      top: 0.2rem;
+      right: 0.3rem;
       color: #fff;
       background: transparent;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       cursor: pointer;
+
       .drop-down {
         position: absolute;
         top: 1rem;
         right: 0;
         width: 400%;
-        background: #fff;
+        background: #1c5c83;
         color: #000;
         border: 1px solid #bbb;
         border-radius: 0.3rem;
+
         ul {
           list-style-type: none;
           font-size: 0.8rem;
@@ -108,47 +125,60 @@
             padding: 0.2rem 0.5rem;
             transition: $transition;
             justify-content: center;
+
             .child {
-              color: #000;
+              color: #fff;
             }
           }
         }
       }
     }
+
     img {
       width: 2.5rem;
       height: 2.5rem;
       border-radius: 50%;
       object-fit: cover;
-      margin-right: 1rem;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
     }
+
     .cmt-right {
       width: 100%;
+
       &__top {
         display: flex;
         align-items: center;
         margin-bottom: 0.5rem;
+        padding-left: 1rem;
+
         @include screen(custom, 400px) {
           justify-content: center;
           margin: 0.5rem 0;
         }
+
         .name {
           color: #fff;
-          font-weight: bold;
-          margin-right: 2rem;
+          font-weight: lighter;
+          margin-right: 1rem;
         }
+
         .timer {
           color: gray;
-          font-size: 0.7rem;
+          font-size: 0.6rem;
           border-left: 1px solid gray;
-          padding: 0.2rem 1rem;
+          padding: 0.2rem 0.5rem;
         }
       }
+
       &__bot {
-        width: 100%;
+        width: 95%;
+        padding-left: 1rem;
+
         form {
           display: flex;
           align-items: center;
+
           button {
             margin-left: 1rem;
             border: none;
@@ -161,12 +191,13 @@
             cursor: pointer;
           }
         }
+
         .message {
           width: 100%;
           border: none;
           padding: 0.3rem 0.5rem;
-          border-radius: 0.3rem;
-          background: #ccc;
+          border-radius: 0.5rem;
+          background: rgb(241, 230, 230);
           text-align: left;
         }
       }

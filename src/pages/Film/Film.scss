@@ -1,7 +1,9 @@
 @import "~scss/config";
+
 .film {
-  width: 110%;
+  width: 100%;
   overflow: hidden;
+
   &__introduce {
     @include flex();
     background-image: linear-gradient(0deg, #010f18, rgba(8, 27, 39, 0.8)),
@@ -13,9 +15,11 @@
     border-radius: 1rem;
     margin-bottom: 5rem;
     padding: 3rem;
+
     &-left {
       margin-right: 3rem;
       @include grid;
+
       img {
         width: 20rem;
         height: 28rem;
@@ -23,26 +27,34 @@
         object-fit: cover;
       }
     }
+
     &-right {
       color: #fff;
-      padding-right: 2rem;
+      padding-right: 0.5rem;
+
       .title {
-        font-size: 4rem;
+        font-size: 2.5rem;
+        margin-right: -5rem;
       }
+
       .evaluate {
         @include flex(row, unset, center);
         margin-bottom: 1rem;
+
         .stars {
           margin: 0 1rem 0 0;
         }
+
         p {
           @include flex(row, center, center);
+
           .icon-tag {
             color: $orange;
             margin: 0 0.5rem 0 0;
           }
         }
       }
+
       .btn-share {
         background: transparent;
         border: 1px solid #0984eb;
@@ -52,47 +64,55 @@
         align-items: center;
         color: #0984eb;
         cursor: pointer;
+
         .count {
           padding-right: 0.5rem;
           font-size: 1.5rem;
+
           .icon {
             padding-right: 0.3rem;
             font-size: 1.8rem;
           }
         }
       }
+
       .btn-group {
         margin-bottom: 1rem;
         @include flex();
         flex-wrap: wrap;
+
         button {
           @include hover(100%, center center, #fff, $darkBlack);
           @include flex(row, unset, center);
-          border-radius: 0.5rem;
-          padding: 1rem 1rem;
+          border-radius: 1rem;
+          padding: 0.5rem 0.7rem;
           border: none;
           margin-right: 0.5rem;
           margin-top: 0.5rem;
           font-size: 1rem;
           color: #fff;
           cursor: pointer;
+
           &.add-fav {
             background-color: $red;
+
             &.disable {
               background-color: #bbb;
               color: $darkBlack;
             }
           }
+
           &.watch {
             background-color: $blue;
           }
         }
+
         .episode {
           @include hover(100%, center center, #fff, $darkBlack);
           background: $orange;
           overflow: unset;
-          border-radius: 0.5rem;
-          padding: 1rem 1rem;
+          border-radius: 1rem;
+          padding: 0.5rem 0.7rem;
           border: none;
           margin-right: 0.5rem;
           font-size: 1rem;
@@ -100,21 +120,26 @@
           cursor: pointer;
           margin-top: 0.5rem;
           @include flex(row, unset, center);
+
           form {
             position: absolute;
             top: 4rem;
             right: 0;
+            left: -10rem;
             width: 400%;
-            background-color: $lightBlack;
+            background-color: #2f749e;
+            border-radius: 0.5rem;
             padding: 1rem;
             @include flex(column, center, center);
+
             .text-input {
               width: 100%;
               margin: 0.5rem 0;
+
               input {
                 width: 100%;
                 border: none;
-                border-radius: 0.5rem;
+                border-radius: 0.7rem;
                 padding: 0.3rem 1rem;
                 font-size: 1.1rem;
                 background-color: #eee;
@@ -123,27 +148,38 @@
 
             .submit-btn {
               @include button($blue, relative);
-              margin-top: 2rem;
+              margin-top: 1rem;
               margin-bottom: 1rem;
+              margin-left: 2rem;
+              border-radius: 1rem;
             }
           }
         }
       }
+
       .details-option {
-        line-height: 1.7;
+        line-height: 2rem;
       }
     }
   }
+
   &__detail {
-    width: 70%;
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+    font-family: 'Lora',
+      serif;
+    width: 95%;
     margin: 5rem auto;
     color: #97abb6;
     letter-spacing: 1px;
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.7rem;
     opacity: 0;
+    border: solid rgb(31, 189, 189);
+    padding: 1.5rem;
+    border-radius: 2rem;
     transform: translateX(50%);
     transition: all 0.8s linear;
+
     &.show {
       opacity: 1;
       transform: translateX(0%);
@@ -154,11 +190,14 @@
 @media (min-width: 500px) and (max-width: 768px) {
   .film {
     width: 100%;
+
     &__introduce {
       flex-direction: column;
       padding: 2rem 1rem;
+
       &-right {
         padding: 0;
+
         .btn-group {
           button {
             margin-top: 0.5rem;
@@ -166,6 +205,7 @@
         }
       }
     }
+
     &__detail {
       width: 80% !important;
     }
@@ -175,22 +215,28 @@
 @media only screen and (max-width: 500px) {
   .film {
     width: 100%;
+
     &__introduce {
       flex-direction: column;
       padding: 1rem 0;
+
       &-left {
         img {
           width: 15rem;
           height: 20rem;
         }
       }
+
       &-right {
         padding: 0;
+
         .title {
           font-size: 2.5rem;
         }
+
         .btn-group {
           flex-direction: column;
+
           button {
             width: 100%;
             margin-top: 0.5rem;
@@ -199,6 +245,7 @@
         }
       }
     }
+
     &__detail {
       width: 100% !important;
     }
