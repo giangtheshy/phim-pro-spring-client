@@ -6,7 +6,7 @@
     text-align: center;
   }
   .form-input {
-    width: 60%;
+    width: 80%;
     height: auto;
     margin: 3rem auto;
     form {
@@ -14,6 +14,16 @@
       .text-input {
         width: 100%;
         margin: 0.5rem 0;
+        display: flex;
+        align-items: flex-start;
+
+        .label {
+          font-weight: bold;
+          color: $orange;
+          font-size: 1.2rem;
+          width: 12rem;
+          white-space: nowrap;
+        }
         input {
           width: 100%;
           border: none;
@@ -31,6 +41,7 @@
         @include flex(row, space-around, center);
         width: 100%;
         margin-bottom: 1rem;
+        margin-left: 9rem;
         .radio-input {
           width: 9rem;
           color: $orange;

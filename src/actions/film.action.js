@@ -110,13 +110,13 @@ export const getWatched = () => async (dispatch) => {
 
 export const getAllEpisodes = (id) => async (dispatch) => {
   try {
-    const {
-      data
-    } = await api.getAllEpisodes(id);
-    dispatch({
-      type: types.GET_ALL_EPISODE,
-      payload: data
-    });
+    if (id) {
+
+      const { data } = await api.getAllEpisodes(id);
+      dispatch({ type: types.GET_ALL_EPISODE, payload: data });
+    } else {
+      dispatch({ type: types.GET_ALL_EPISODE, payload: [] });
+    }
   } catch (error) {
     console.log(error);
   }

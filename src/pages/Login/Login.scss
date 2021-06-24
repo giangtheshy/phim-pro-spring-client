@@ -22,7 +22,7 @@
     border-radius: 1rem;
     line-height: 3;
     .title {
-      color: #FFF;
+      color: #fff;
       font-size: 1.2rem;
       text-align: center;
     }
@@ -90,20 +90,19 @@
         font-weight: bold;
         cursor: pointer;
       }
-      .forgot:hover{
+      .forgot:hover {
         text-decoration: underline;
       }
-      
     }
-    .hr-slice{
+    .hr-slice {
       width: 70%;
       margin: 0.5rem 0;
     }
-    .hr-slice2{
+    .hr-slice2 {
       width: 100%;
       margin: 0.5rem 0;
     }
-    .btn-slice{
+    .btn-slice {
       margin-bottom: 1.5rem;
     }
     .social-login {
@@ -152,8 +151,11 @@
             margin-right: 10%;
             margin-left: 22%;
           }
-          margin-right: 20%;
-          margin-left: 0;
+          // margin-right: 20%;
+
+          margin: 0 0 0 0;
+          text-align: left;
+          background: transparent;
         }
         &_icon {
           font-size: 1.4rem;
@@ -198,12 +200,12 @@
             margin-right: 1rem;
             font-size: 1.3rem;
           }
-          .fb-text{
-            padding:0;
+          .fb-text {
+            padding: 0;
+            text-align: left;
             margin: 0;
-            background-color: #0a7fec;
+            background: transparent;
           }
-          
         }
       }
     }

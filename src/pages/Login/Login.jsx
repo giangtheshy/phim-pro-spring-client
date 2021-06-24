@@ -147,7 +147,7 @@ const Login = () => {
             .then((url) => {
               setImage(url);
             });
-        }
+        },
       );
     }
   };
@@ -215,9 +215,15 @@ const Login = () => {
         </div>
         <div className="sub-title">
           {isLogin ? (
-            <p className="title"> <span className="orange-text bold">ĐĂNG NHẬP</span> để có trải nghiệm tốt hơn!</p>
-          ):(
-            <p className="title"> <span className="orange-text bold">ĐĂNG KÝ</span> nếu bạn chưa có bất kì tài khoản nào!</p>
+            <p className="title">
+              {" "}
+              <span className="orange-text bold">ĐĂNG NHẬP</span> để có trải nghiệm tốt hơn!
+            </p>
+          ) : (
+            <p className="title">
+              {" "}
+              <span className="orange-text bold">ĐĂNG KÝ</span> nếu bạn chưa có bất kì tài khoản nào!
+            </p>
           )}
         </div>
         {isLogin ? (
@@ -327,7 +333,7 @@ const Login = () => {
             render={(props) => (
               <button className="google_login " onClick={props.onClick} disabled={props.disabled}>
                 {loadingSocial.google ? <Loading /> : <GrGooglePlus className="google_login_icon" />}{" "}
-                <p className="google_login_text">Đăng nhập bằng Google</p>
+                <span className="google_login_text">Đăng nhập bằng Google</span>
               </button>
             )}
           />

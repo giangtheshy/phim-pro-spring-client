@@ -20,13 +20,16 @@
         .img {
           width: 35%;
           margin-right: 0.5rem;
-          img {
-            height: 5rem;
-            object-fit: cover;
-          }
-          .watched {
-            padding: 0.5rem;
-            font-size: 0.7rem;
+          &-center {
+            height: 6rem;
+            img {
+              height: 6rem;
+              object-fit: cover;
+            }
+            .watched {
+              padding: 0.5rem;
+              font-size: 0.7rem;
+            }
           }
           .evaluate {
             left: 30%;
@@ -40,6 +43,7 @@
           }
           .title {
             white-space: normal;
+            font-size: 1rem;
           }
           p {
             display: none;

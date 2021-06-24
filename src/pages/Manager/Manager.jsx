@@ -41,7 +41,7 @@ const Manager = () => {
             ...filmData,
             search: convert(filmData.title),
             // url: filmData.url.match(regex) ? filmData.url.replace(regex, "youtube.com/embed/") : filmData.url,
-          })
+          }),
         );
       } else {
         dispatch(
@@ -49,7 +49,7 @@ const Manager = () => {
             ...filmData,
             search: convert(filmData.title),
             // url: filmData.url.match(regex) ? filmData.url.replace(regex, "youtube.com/embed/") : filmData.url,
-          })
+          }),
         );
       }
 
@@ -78,6 +78,7 @@ const Manager = () => {
       <div className="form-input">
         <form onSubmit={handleSubmit}>
           <label htmlFor="title" className="text-input">
+            <span className="label">Tên phim : </span>
             <input
               type="text"
               name="title"
@@ -88,6 +89,7 @@ const Manager = () => {
             />
           </label>
           <label htmlFor="image" className="text-input">
+            <span className="label">Ảnh bìa : </span>
             <input
               type="text"
               name="image"
@@ -98,6 +100,7 @@ const Manager = () => {
             />
           </label>
           <label htmlFor="stars" className="text-input">
+            <span className="label">Số sao : </span>
             <input
               type="number"
               name="stars"
@@ -110,6 +113,7 @@ const Manager = () => {
             />
           </label>
           <label htmlFor="category" className="text-input">
+            <span className="label">Thể loại : </span>
             <input
               type="text"
               name="category"
@@ -120,6 +124,7 @@ const Manager = () => {
             />
           </label>
           <label htmlFor="episode" className="text-input">
+            <span className="label">Số tập : </span>
             <input
               type="number"
               name="episode"
@@ -131,6 +136,7 @@ const Manager = () => {
             />
           </label>
           <label htmlFor="directors" className="text-input">
+            <span className="label">Đạo diễn : </span>
             <input
               type="text"
               name="directors"
@@ -141,6 +147,7 @@ const Manager = () => {
             />
           </label>
           <label htmlFor="country" className="text-input">
+            <span className="label">Nước sản xuất : </span>
             <input
               type="text"
               name="country"
@@ -151,6 +158,7 @@ const Manager = () => {
             />
           </label>
           <label htmlFor="description" className="text-input">
+            <span className="label">Mô tả : </span>
             <textarea
               type="text"
               name="description"
